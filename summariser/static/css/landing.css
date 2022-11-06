@@ -1,0 +1,70 @@
+body {
+  background-color: #00A5FF;
+}
+
+.container {
+  position:relative;
+  width: 500px;
+  height: 100px;
+  background: linear-gradient(to bottom,#fff,#fff 50%, #DDD);
+  margin: 0 auto;
+  margin-top: 100px;
+  box-shadow: 0 6px 8px -8px rgba(51, 51, 51, .5), 
+    6px 0 8px -8px rgba(51, 51, 51, .5), 
+    -6px 0 8px -8px rgba(51, 51, 51, .5);
+  overflow: hidden;
+}
+
+.container * {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translatez(.1px)
+}
+
+.waveBox {
+  width: 820px;
+  height: 900px;
+  border-radius: 50%;
+  position: absolute;
+  animation: waver 5s .5s infinite linear;
+  background-color: #D9EBF0;
+  opacity: .8;
+  left: -150px;
+  top: 50px;
+  transform-origin: center, center;
+}
+
+@keyframes waver {
+  0% {
+    transform: translatez(.1px) rotate(0deg);
+  }
+  
+  100% {
+    transform: translatez(.1px) rotate(360deg);
+  }
+}
+
+#waveTwo {
+  background-color: #4A8FE3;
+  opacity: .8;
+  left: -450px;
+  animation: waver 5s infinite linear;
+}
+
+#waveThree {
+  background-color: #4A8FE3;
+  opacity: .5;
+  left: 150px;
+  animation: waver 5s 1.5s infinite linear;
+}
+
+.text {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 36px;
+  line-height: 58px;
+  float: left;
+  position: relative;
+  margin-left: 115px;
+}
