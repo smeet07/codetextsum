@@ -39,3 +39,6 @@ def textsumPage(request):
 def codesumPage(request):
     
     return render(request,'codesum.html')
+def pysumPage(request):
+    
+    return render(request,'pysum.html')
