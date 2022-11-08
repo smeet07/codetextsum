@@ -6,10 +6,15 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm,TextSumForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
-# from gensim.summarization.summarizer import summarize
-# from gensim.summarization import keywords
-# import wikipedia
-# import en_core_web_sm
+from sumy.summarizers.lex_rank import LexRankSummarizer
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.nlp.stemmers import Stemmer
+from sumy.utils import get_stop_words
+import wikipedia
+import nltk
+import en_core_web_sm
+
 def landing(request):
     return render(request,'landing.html')
 def registerPage(request):
@@ -45,7 +50,23 @@ def textsumPage(request):
     if request.method=="POST":
         if form.is_valid():
             s=form['text'].value()
-            print(s)
+            wikisearch = wikipedia.page(s)
+            wikicontent = wikisearch.content
+            nlp = en_core_web_sm.load()
+            summarizer_lex = LexRankSummarizer()
+            # nltk.download('punkt')
+
+            doc = nlp(wikicontent)
+            parser = PlaintextParser.from_string(doc,Tokenizer("english"))
+            summary= summarizer_lex(parser.document, 2)
+            # print(summary)
+            lex_summary=""
+            for sentence in summary:
+                lex_summary+=str(sentence)
+            print(lex_summary)
+            # print(lex_summary)
+            # print(doc)
+            
 
 
     

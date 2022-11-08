@@ -9,4 +9,4 @@ class CreateUserForm(UserCreationForm):
 class TextSumForm(forms.ModelForm):
     class Meta:
         model=TextSum
-        fields=['text','summary']
+        fields=['text']
