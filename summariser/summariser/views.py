@@ -79,6 +79,12 @@ def textsumPage(request):
     
     return render(request,'textsum.html',context)
 def codesumPage(request):
+    
+
+
+    
+    return render(request,'codesum.html')
+def pysumPage(request):
     form=PySumForm(request.POST or None)
     if request.method=="POST":
         if form.is_valid():
@@ -86,10 +92,5 @@ def codesumPage(request):
     context={
         "form":form
     }
-
-
     
-    return render(request,'codesum.html',context)
-def pysumPage(request):
-    
-    return render(request,'pysum.html')
+    return render(request,'pysum.html',context)

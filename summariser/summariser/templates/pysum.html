@@ -117,10 +117,9 @@ padding-right:5px;
     <form method='POST' action=''>{% csrf_token %}
         
         <h3>PYTHON SUMMARY</h3>
-        <input type="text" name="text" placeholder="input text" required>
+        {{ form.as_p }}
 
         <button type="submit">Generate summary</button>
-        {{form.errors}}
         
     </form>
    </div>
