@@ -116,11 +116,10 @@ padding-right:5px;
    <div class="container">
     <form method='POST' action=''>
         
-        <h3>TEXT SUMMARY</h3>
-        <input type="text" name="text" placeholder="input text" required>
+        <h3>TEXT SUMMARY</h3>{% csrf_token %}
+        {{ form.as_p }}
 
         <button type="submit">Generate summary</button>
-        {{form.errors}}
         
     </form>
    </div>
