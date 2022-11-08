@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django.template.loader import get_template
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm,TextSumForm
+from .forms import CreateUserForm,TextSumForm,PySumForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from sumy.summarizers.lex_rank import LexRankSummarizer
@@ -79,8 +79,17 @@ def textsumPage(request):
     
     return render(request,'textsum.html',context)
 def codesumPage(request):
+    form=PySumForm(request.POST or None)
+    if request.method=="POST":
+        if form.is_valid():
+            s=form['code'].value()
+    context={
+        "form":form
+    }
+
+
     
-    return render(request,'codesum.html')
+    return render(request,'codesum.html',context)
 def pysumPage(request):
     
     return render(request,'pysum.html')
