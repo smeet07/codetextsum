@@ -114,9 +114,9 @@ padding-right:5px;
 
 
    <div class="container">
-    <form method='POST' action=''>
+    <form method='POST' action=''>{% csrf_token %}
         
-        <h3>TEXT SUMMARY</h3>
+        <h3>PYTHON SUMMARY</h3>
         <input type="text" name="text" placeholder="input text" required>
 
         <button type="submit">Generate summary</button>

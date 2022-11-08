@@ -25,7 +25,9 @@ urlpatterns = [
     path('register/',views.registerPage,name="register"),
     path('textsum/',views.textsumPage,name="textsum"),
     path('codesum/',views.codesumPage,name="codesum"),
-     path('pysum/',views.pysumPage,name="pysum"),
+    path('pysum/',views.pysumPage,name="pysum"),
+    path('home/',views.homePage,name='home'),
+
 
 
 

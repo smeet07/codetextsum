@@ -40,6 +40,11 @@ h3{
     transition: 0.5s;
 
 }
+.container form a{
+  color:fff;
+    text-decoration: None;
+    font-size: 15px;
+}
 form input{
     width: 100%;
     padding:  10px 5px;
@@ -114,11 +119,11 @@ padding-right:5px;
 
 
    <div class="container">
-    <form method='POST' action=''>
+    <form method='POST' action=''>{% csrf_token %}
         
         <h3>CODE SUMMARY</h3>
 
-        <button type="submit">python summary</button>
+        <button type="submit"><a href="{% url 'pysum' %}">python summary</a></button>
         <button type="submit">java summary</button>
         {{form.errors}}
         

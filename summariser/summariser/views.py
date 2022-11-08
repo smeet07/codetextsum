@@ -13,10 +13,13 @@ from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
 import wikipedia
 import nltk
+from .models import TextSum
 import en_core_web_sm
 
 def landing(request):
     return render(request,'landing.html')
+def homePage(request):
+    return render(request,'homepage.html')
 def registerPage(request):
     form=CreateUserForm
     if request.method=='POST':
@@ -37,16 +40,14 @@ def loginPage(request):
        user=authenticate(request,username=username,password=password)
        if user is not None:
            login(request,user)
-           return redirect('home1')
+           return redirect('home')
        else :
            messages.info(request,'Username or password incorrect')
     context={}
     return render(request,'login.html',context)
 def textsumPage(request):
     form=TextSumForm(request.POST or None)
-    context={
-        "form":form
-    }
+    lex_summary=""
     if request.method=="POST":
         if form.is_valid():
             s=form['text'].value()
@@ -64,9 +65,15 @@ def textsumPage(request):
             for sentence in summary:
                 lex_summary+=str(sentence)
             print(lex_summary)
+            foo_instance=TextSum.objects.create(text=s,data=doc,summary=lex_summary)
+
+
             # print(lex_summary)
             # print(doc)
-            
+    context={
+        "form":form,
+        "lex_summary":lex_summary
+    }       
 
 
     
