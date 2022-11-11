@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import TextSum,PythonSum
+from .models import TextSum,PythonSum,TextImgSum
 class CreateUserForm(UserCreationForm):
     class Meta:
         model=User
@@ -14,3 +14,7 @@ class PySumForm(forms.ModelForm):
     class Meta:
         model=PythonSum
         fields=['code']
+class TextImgSumForm(forms.ModelForm):
+    class Meta:
+        model=TextImgSum
+        fields=['name','img']

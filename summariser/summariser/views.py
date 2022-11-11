@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django.template.loader import get_template
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm,TextSumForm,PySumForm
+from .forms import CreateUserForm,TextSumForm,PySumForm,TextImgSumForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from sumy.summarizers.lex_rank import LexRankSummarizer
@@ -13,7 +13,7 @@ from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
 import wikipedia
 import nltk
-from .models import TextSum
+from .models import TextSum,TextImgSum
 import en_core_web_sm
 
 def landing(request):
@@ -92,5 +92,20 @@ def pysumPage(request):
     context={
         "form":form
     }
-    
     return render(request,'pysum.html',context)
+def textimgsumPage(request):
+    form=TextImgSumForm(request.POST or None,request.FILES)
+
+    if request.method=="POST":
+        if form.is_valid():
+            s=form['name'].value()
+            s1=form['img'].value()
+            print(S1)
+            foo_instance=TextImgSum.objects.create(name=s,img=s1)
+    context={
+        "form":form
+    }       
+
+
+    
+    return render(request,'textimgsum.html',context)

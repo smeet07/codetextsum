@@ -118,7 +118,7 @@ padding-right:5px;
 
 
    <div class="container">
-    <form method='POST' action=''>
+    <form class="form-horizontal form_middle" enctype='multipart/form-data' method='POST' action=''>
         
         <h3>TEXT SUMMARY</h3>{% csrf_token %}
         {{ form.as_p }}
@@ -126,7 +126,6 @@ padding-right:5px;
         <button type="submit">Generate summary</button>
         
     </form>
-    <div class="result">{{lex_summary}}</div>
    </div>
 
    <div>
